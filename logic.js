@@ -12,7 +12,9 @@ function Ball(x, y, color, dimension, speed_x, speed_y) {
     this.dy = speed_y;
 }
 
-var balls = [new Ball(250, 200, "#82dd4f", 100, 1, 3), new Ball(220, 110, "#dd1d1d", 30, 2, 4), new Ball(420, 380, "#5568dd", 40, 3,3), new Ball(270,300,"#c805dd", 45,4,5)];
+// Changed the color of the biggest ball from green to blue
+
+var balls = [new Ball(250, 200, "#2827dd", 100, 1, 3), new Ball(220, 110, "#dd1d1d", 30, 2, 4), new Ball(420, 380, "#5568dd", 40, 3,3), new Ball(270,300,"#c805dd", 45,4,5)];
 
 
 function drawBall(ball) {
