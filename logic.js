@@ -49,6 +49,4 @@ function draw() {
     }
 }
 
-// AGGIUNTO UN COMMENTO
-
 setInterval(draw, 10);
