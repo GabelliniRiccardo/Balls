@@ -52,3 +52,10 @@ function draw() {
 }
 
 setInterval(draw, 10);
+document.getElementById("title").style.marginLeft = canvas_width/2 -50 + 'px';
+document.getElementById("title").style.fontSize = 50 + 'px';
+document.getElementById("title").style.fontFamily = "Impact,Charcoal,sans-serif";
+
+document.getElementById("subtitle").style.marginLeft = canvas_width/2 -75 + 'px';
+//document.getElementById("title").style.fontSize = 2 + 'px';
+document.getElementById("subtitle").style.fontFamily = "Impact,Charcoal,sans-serif";
