@@ -15,7 +15,7 @@ function Ball(x, y, color, dimension, speed_x, speed_y) {
 }
 
 
-var balls = [new Ball(250, 200, "#1edd34", 100, 1, 3), new Ball(220, 110, "#dd1d1d", 30, 2, 4), new Ball(420, 380, "#5568dd", 40, 3, 3), new Ball(270, 300, "#c805dd", 45, 4, 5)];
+var balls = [];
 
 
 function drawBall(ball) {
@@ -40,19 +40,21 @@ function draw() {
         balls[i].x += balls[i].dx;
         balls[i].y += balls[i].dy;
 
+        document.getElementById("subtitle").innerText = "There are " + balls.length + " balls ";
+
         if (balls[i].y > canvas_height - (balls[i].dimension)) {
             balls[i].dy = balls[i].dy * (-1);
             count = count + 1;
             document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
 
-            executeTimerAndChangeColor(balls[i].color);
+            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
 
         } else if (balls[i].y < (balls[i].dimension)) {
             balls[i].dy = balls[i].dy * (-1);
             count = count + 1;
             document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
 
-            executeTimerAndChangeColor(balls[i].color);
+            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
         }
 
 
@@ -61,25 +63,30 @@ function draw() {
             count = count + 1;
             document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
 
-            executeTimerAndChangeColor(balls[i].color);
+            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
 
         } else if (balls[i].x > (canvas_width - balls[i].dimension)) {
             balls[i].dx = balls[i].dx * (-1);
             count = count + 1;
             document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
 
-            executeTimerAndChangeColor(balls[i].color);
+            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
         }
 
 
     }
 }
 
-function executeTimerAndChangeColor(colorOfTheBall) {
+function changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(colorOfTheBall) {
 
-    setTimeout(function () { document.getElementById("numOfCollision").style.color = colorOfTheBall;
-                                canvas.style.borderColor=colorOfTheBall;});
+    document.getElementById("numOfCollision").style.color = colorOfTheBall;
+    canvas.style.borderColor = colorOfTheBall;
 
 }
+
+function addANewBall(x, y, color, dimension, speed_x, speed_y) {
+    balls[balls.length] = new Ball(x, y, color, dimension, speed_x, speed_y);
+}
+
 
 setInterval(draw, 10);

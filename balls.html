@@ -5,9 +5,14 @@
 </head>
 <body>
 
+
 <h1 id="title">Balls</h1>
-<p id="subtitle">There are a lot of balls</p>
+<p id="subtitle">There are 0 balls </p>
+<button type="button"
+        onclick="addANewBall(500, 350, '#'+((1<<24)*Math.random()|0).toString(16), Math.random()*100, Math.round(Math.random()*4), Math.round(Math.random()*4))"
+>Add a new Ball! </button>
 <p id="numOfCollision">Number of collision detected: 0</p>
+
 
 <canvas id="myCanvas" width="1000" height="700"></canvas>
 
