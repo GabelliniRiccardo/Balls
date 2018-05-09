@@ -1,1 +1,56 @@
-canvas { background: #eee; }
+canvas{
+    background: white;
+    border-color: black;
+    border-style: solid;
+}
+
+canvas:hover{
+    border-color: red;
+    border-style: solid;
+}
+
+
+h1#title:hover {
+    position: relative;
+    left: 450px;
+    width: max-content;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 50px;
+    background-color: aqua;
+    border-color: blue;
+    border-style: solid;
+}
+
+h1#title {
+    position: relative;
+    left: 450px;
+    width: max-content;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 50px;
+    background-color: transparent;
+    border-color: transparent;
+    border-style: solid;
+}
+
+p#subtitle {
+    position: relative;
+    left: 425px;
+    width: max-content;
+    text-align: center;
+    border-radius: 5px;
+    border-color: transparent;
+    border-style: solid;
+}
+
+p#subtitle:hover {
+    position: relative;
+    left: 425px;
+    width: max-content;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 5px;
+    border-color: #ff0800;
+    border-style: solid;
+}
