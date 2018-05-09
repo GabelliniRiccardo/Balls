@@ -1,14 +1,12 @@
-canvas{
+canvas {
     background: white;
     border-color: black;
     border-style: solid;
 }
 
-canvas:hover{
-    border-color: red;
-    border-style: solid;
+canvas:hover {
+    border-style: dashed;
 }
-
 
 h1#title:hover {
     position: relative;
@@ -53,4 +51,9 @@ p#subtitle:hover {
     border-radius: 5px;
     border-color: #ff0800;
     border-style: solid;
+}
+
+p#numOfCollision {
+    position: relative;
+    left: 410px;
 }
