@@ -94,3 +94,8 @@ div[class="left"] {
     margin-right: 4px;
     margin-top: 40px;
 }
+
+#color{
+    width: 100px;
+    height: 50px;
+}

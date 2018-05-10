@@ -114,10 +114,15 @@ function readBalDimensionFromInputFieldAndCreateIt() {
     if (x > 0 & x >= dimension && x <= (canvas_width - dimension) && y <= (canvas_height - dimension) && y > 0 && y >= dimension && velocity_along_y != "" && velocity_along_x != "" && x != "" && y != "")
         correct_input = true;
 
+    color = document.getElementById("color").value;
+    console.log(color);
+
     if (correct_input)
-        addANewBall(x, y, '#' + ((1 << 24) * Math.random() | 0).toString(16), dimension, velocity_along_x, velocity_along_y);
+        addANewBall(x, y, color, dimension, velocity_along_x, velocity_along_y);
     else
-        alert("The ball doesn't respect the dimension!" )
+        alert("The ball doesn't respect the dimension!");
+
+
 }
 
 setInterval(draw, 10);
