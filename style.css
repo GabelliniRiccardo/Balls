@@ -12,7 +12,7 @@ canvas:hover {
 
 h1#title:hover {
     position: relative;
-    left: 20%;
+    left: 40%;
     width: max-content;
     text-align: center;
     border-radius: 0px;
@@ -25,7 +25,7 @@ h1#title:hover {
 h1#title {
     margin-bottom: -15px;
     position: relative;
-    left: 20%;
+    left: 40%;
     width: max-content;
     text-align: center;
     border-radius: 0px;
@@ -38,7 +38,7 @@ h1#title {
 p#subtitle {
     margin-bottom: 2px;
     position: relative;
-    left: 20%;
+    left: 40%;
     width: max-content;
     text-align: center;
     border-radius: 0px;
@@ -48,7 +48,7 @@ p#subtitle {
 
 p#subtitle:hover {
     position: relative;
-    left: 20%;
+    left: 40%;
     width: max-content;
     text-align: center;
     border-radius: 0px;
@@ -63,17 +63,27 @@ p#numOfCollision {
 }
 
 button {
-    margin-bottom: -10px;
     position: relative;
-    left: 20%;
     background-color: #4CAF50;
     font-size: 28px;
     color: #FFFFFF;
-    padding: 5px;
+    padding-top: 14px;
+    padding-bottom: -4px;
     text-align: center;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+}
+
+input {
+    width: max-content;
+    padding-top: 20px;
+    font-size: 20px;
+    margin: 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }

@@ -6,13 +6,24 @@
 <body>
 
 
-<h1 id="title">Balls</h1>
-<p id="subtitle">There are 0 balls </p>
-<button type="button"
-        onclick="addANewBall(500, 350, '#'+((1<<24)*Math.random()|0).toString(16), Math.random()*100, Math.round(Math.random()*4), Math.round(Math.random()*4))"
->Add a new Ball! </button>
-<p id="numOfCollision">Number of collision detected: 0</p>
+<div>
+    <h1 id="title">Balls</h1>
 
+</div>
+
+<p id="subtitle">There are 0 balls</p>
+
+
+<div>
+    <input type="text" id="ballDimension" placeholder="Ball Dimension..."/>
+    <input type="text" id="positionX" placeholder="Position in x..."/>
+    <input type="text" id="positionY" placeholder="Position in y..."/>
+    <input type="text" id="velocityAlongX" placeholder="Velocity along x..."/>
+    <input type="text" id="velocityAlongY" placeholder="Velocity along y..."/>
+    <button type="button" onclick="readBalDimensionFromInputFieldAndCreateIt()">Add a new Ball!</button>
+</div>
+
+<p id="numOfCollision">Number of collision detected: 0</p>
 
 <canvas id="myCanvas" width="1000" height="700"></canvas>
 

@@ -14,6 +14,8 @@ function Ball(x, y, color, dimension, speed_x, speed_y) {
     this.dy = speed_y;
 }
 
+////"addANewBall(500, 350, '#'+((1<<24)*Math.random()|0).toString(16), Math.random()*100, Math.round(Math.random()*4),
+// Math.round(Math.random()*4))"
 
 var balls = [];
 
@@ -88,5 +90,32 @@ function addANewBall(x, y, color, dimension, speed_x, speed_y) {
     balls[balls.length] = new Ball(x, y, color, dimension, speed_x, speed_y);
 }
 
+
+function readBalDimensionFromInputFieldAndCreateIt() {
+
+    correct_input = false;
+
+    dimension = document.getElementById("ballDimension").value;
+
+    document.getElementById('ballDimension').value = "";
+
+    x = parseInt(document.getElementById("positionX").value);
+    document.getElementById('positionX').value = "";
+
+    y = parseInt(document.getElementById("positionY").value);
+    document.getElementById('positionY').value = "";
+
+    velocity_along_x = parseInt(document.getElementById("velocityAlongX").value);
+    document.getElementById('velocityAlongX').value = "";
+
+    velocity_along_y = parseInt(document.getElementById("velocityAlongY").value);
+    document.getElementById('velocityAlongY').value = "";
+
+    if (x > 0 & x >= dimension && x <= (canvas_width - dimension) && y <= (canvas_height - dimension) && y > 0 && y >= dimension && velocity_along_y != "" && velocity_along_x != "" && x != "" && y != "")
+        correct_input = true;
+
+    if (correct_input)
+        addANewBall(x, y, '#' + ((1 << 24) * Math.random() | 0).toString(16), dimension, velocity_along_x, velocity_along_y);
+}
 
 setInterval(draw, 10);
