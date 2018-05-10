@@ -116,6 +116,8 @@ function readBalDimensionFromInputFieldAndCreateIt() {
 
     if (correct_input)
         addANewBall(x, y, '#' + ((1 << 24) * Math.random() | 0).toString(16), dimension, velocity_along_x, velocity_along_y);
+    else
+        alert("The ball doesn't respect the dimension!" )
 }
 
 setInterval(draw, 10);

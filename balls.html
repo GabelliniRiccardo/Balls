@@ -14,18 +14,29 @@
 <p id="subtitle">There are 0 balls</p>
 
 
-<div>
-    <input type="text" id="ballDimension" placeholder="Ball Dimension..."/>
-    <input type="text" id="positionX" placeholder="Position in x..."/>
-    <input type="text" id="positionY" placeholder="Position in y..."/>
-    <input type="text" id="velocityAlongX" placeholder="Velocity along x..."/>
-    <input type="text" id="velocityAlongY" placeholder="Velocity along y..."/>
-    <button type="button" onclick="readBalDimensionFromInputFieldAndCreateIt()">Add a new Ball!</button>
+<div id="container">
+    <div class="left">
+        <div>
+            <input type="text" id="ballDimension" placeholder="Ball Dimension..."/>
+            <input type="text" id="positionX" placeholder="Position in x..."/>
+        </div>
+        <div><input type="text" id="positionY" placeholder="Position in y..."/>
+            <input type="text" id="velocityAlongX" placeholder="Velocity along x..."/>
+        </div>
+
+        <div>
+            <input type="text" id="velocityAlongY" placeholder="Velocity along y..."/>
+            <button type="button" onclick="readBalDimensionFromInputFieldAndCreateIt()">Add a new Ball!</button>
+        </div>
+    </div>
+
+
+    <div id="rigth">
+        <p id="numOfCollision">Number of collision detected: 0</p>
+        <canvas id="myCanvas" width="1000" height="700"></canvas>
+    </div>
+
 </div>
-
-<p id="numOfCollision">Number of collision detected: 0</p>
-
-<canvas id="myCanvas" width="1000" height="700"></canvas>
 
 
 <script type="text/javascript" src="logic.js"></script>

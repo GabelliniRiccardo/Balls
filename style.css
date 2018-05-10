@@ -1,5 +1,4 @@
 canvas {
-    margin-left: 20%;
     margin-top: 5px;
     background: white;
     border-color: black;
@@ -8,6 +7,7 @@ canvas {
 
 canvas:hover {
     border-style: dashed;
+
 }
 
 h1#title:hover {
@@ -23,6 +23,7 @@ h1#title:hover {
 }
 
 h1#title {
+    margin-top: -10px;
     margin-bottom: -15px;
     position: relative;
     left: 40%;
@@ -48,7 +49,6 @@ p#subtitle {
 
 p#subtitle:hover {
     position: relative;
-    left: 40%;
     width: max-content;
     text-align: center;
     border-radius: 0px;
@@ -57,13 +57,14 @@ p#subtitle:hover {
 }
 
 p#numOfCollision {
-    left: 20%;
+
     margin-bottom: -3px;
     position: relative;
 }
 
 button {
     position: relative;
+    margin-left: 30px;
     background-color: #4CAF50;
     font-size: 28px;
     color: #FFFFFF;
@@ -86,4 +87,10 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+div[class="left"] {
+    float: left;
+    margin-right: 4px;
+    margin-top: 40px;
 }
