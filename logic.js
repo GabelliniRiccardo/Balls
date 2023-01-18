@@ -6,8 +6,7 @@ let canvas = document.getElementsByTagName("canvas")[0];
 
 function setCanvasSize() {
     canvas.width = window.innerWidth - (window.innerWidth > 500 ? 100 : 10);
-    canvas.height = 600
-    balls = [];
+    canvas.height = window.innerHeight - 200
 }
 
 // Set the initial size of the canvas
@@ -26,6 +25,7 @@ function Ball(x, y, color, dimension, speed_x, speed_y) {
 }
 
 function drawBall(ball) {
+    canvas = document.getElementsByTagName("canvas")[0];
     let ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.dimension, 0, 2 * Math.PI);
@@ -54,6 +54,10 @@ function draw() {
             count++;
             lastBallColor = ball.color;
         }
+
+        if (ball.x + ball.dimension > canvas.width) {
+            ball.x = canvas.width - ball.dimension
+        }
     });
 
     const numOfCollisionDetectedElement = document.getElementById("numOfCollision");
@@ -64,7 +68,7 @@ function draw() {
 
 function addANewBall() {
     canvas = document.getElementsByTagName("canvas")[0];
-    const color = '#'+((1<<24)*Math.random()|0).toString(16);
+    const color = '#' + ((1 << 24) * Math.random() | 0).toString(16);
     const dimension = Math.random() * 100;
     const speed_x = Math.round(Math.random() * 4);
     const speed_y = Math.round(Math.random() * 4);
