@@ -1,9 +1,20 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var canvas_width = 1000;
-var canvas_height = 700;
-var count = 0;
+let count = 0;
+let lastBallColor = null;
+let balls = [];
 
+let canvas = document.getElementsByTagName("canvas")[0];
+
+function setCanvasSize() {
+    canvas.width = window.innerWidth - (window.innerWidth > 500 ? 100 : 10);
+    canvas.height = 600
+    balls = [];
+}
+
+// Set the initial size of the canvas
+setCanvasSize();
+
+// Update the size of the canvas when the window is resized
+window.addEventListener("resize", setCanvasSize);
 
 function Ball(x, y, color, dimension, speed_x, speed_y) {
     this.x = x;
@@ -14,115 +25,51 @@ function Ball(x, y, color, dimension, speed_x, speed_y) {
     this.dy = speed_y;
 }
 
-////"addANewBall(500, 350, '#'+((1<<24)*Math.random()|0).toString(16), Math.random()*100, Math.round(Math.random()*4),
-// Math.round(Math.random()*4))"
-
-var balls = [];
-
-
 function drawBall(ball) {
-
+    let ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.arc(ball.x, ball.y, ball.dimension, 0, Math.PI * 2);
+    ctx.arc(ball.x, ball.y, ball.dimension, 0, 2 * Math.PI);
     ctx.fillStyle = ball.color;
     ctx.fill();
     ctx.closePath();
-
 }
-
 
 function draw() {
+    requestAnimationFrame(draw);
+    let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-
-    for (i = 0; i < balls.length; i++) {
-        drawBall(balls[i]);
-
-
-        balls[i].x += balls[i].dx;
-        balls[i].y += balls[i].dy;
-
-        document.getElementById("subtitle").innerText = "There are " + balls.length + " balls ";
-
-        if (balls[i].y > canvas_height - (balls[i].dimension)) {
-            balls[i].dy = balls[i].dy * (-1);
-            count = count + 1;
-            document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
-
-            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
-
-        } else if (balls[i].y < (balls[i].dimension)) {
-            balls[i].dy = balls[i].dy * (-1);
-            count = count + 1;
-            document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
-
-            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
+    balls.forEach(ball => {
+        drawBall(ball);
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+        if (ball.y > canvas.height - (ball.dimension) || ball.y < (ball.dimension)) {
+            ball.dy = ball.dy * (-1);
+            count++;
+            lastBallColor = ball.color;
         }
 
-
-        if (balls[i].x < (balls[i].dimension)) {
-            balls[i].dx = balls[i].dx * (-1);
-            count = count + 1;
-            document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
-
-            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
-
-        } else if (balls[i].x > (canvas_width - balls[i].dimension)) {
-            balls[i].dx = balls[i].dx * (-1);
-            count = count + 1;
-            document.getElementById("numOfCollision").innerText = "Number of collision detected: " + count;
-
-            changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(balls[i].color);
+        if (ball.x < (ball.dimension) || ball.x > (canvas.width - ball.dimension)) {
+            ball.dx = ball.dx * (-1);
+            count++;
+            lastBallColor = ball.color;
         }
+    });
 
-
-    }
+    const numOfCollisionDetectedElement = document.getElementById("numOfCollision");
+    numOfCollisionDetectedElement.textContent = `Number of collision detected: ${count}`
+    numOfCollisionDetectedElement.style.color = lastBallColor;
+    canvas.style.borderColor = lastBallColor;
 }
 
-function changeColorOfTheNumberOfCollisionAndRectangleOfCanvas(colorOfTheBall) {
-
-    document.getElementById("numOfCollision").style.color = colorOfTheBall;
-    canvas.style.borderColor = colorOfTheBall;
-
+function addANewBall() {
+    canvas = document.getElementsByTagName("canvas")[0];
+    const color = '#'+((1<<24)*Math.random()|0).toString(16);
+    const dimension = Math.random() * 100;
+    const speed_x = Math.round(Math.random() * 4);
+    const speed_y = Math.round(Math.random() * 4);
+    balls.push(new Ball(canvas.width / 2, canvas.height / 2, color, dimension, speed_x, speed_y));
+    document.getElementById("ballNumberText").textContent = `There are ${balls.length} balls`
 }
 
-function addANewBall(x, y, color, dimension, speed_x, speed_y) {
-    balls[balls.length] = new Ball(x, y, color, dimension, speed_x, speed_y);
-}
-
-
-function readBalDimensionFromInputFieldAndCreateIt() {
-
-    correct_input = false;
-
-    dimension = document.getElementById("ballDimension").value;
-
-    document.getElementById('ballDimension').value = "";
-
-    x = parseInt(document.getElementById("positionX").value);
-    document.getElementById('positionX').value = "";
-
-    y = parseInt(document.getElementById("positionY").value);
-    document.getElementById('positionY').value = "";
-
-    velocity_along_x = parseInt(document.getElementById("velocityAlongX").value);
-    document.getElementById('velocityAlongX').value = "";
-
-    velocity_along_y = parseInt(document.getElementById("velocityAlongY").value);
-    document.getElementById('velocityAlongY').value = "";
-
-    if (x > 0 & x >= dimension && x <= (canvas_width - dimension) && y <= (canvas_height - dimension) && y > 0 && y >= dimension && velocity_along_y != "" && velocity_along_x != "" && x != "" && y != "")
-        correct_input = true;
-
-    color = document.getElementById("color").value;
-    console.log(color);
-
-    if (correct_input)
-        addANewBall(x, y, color, dimension, velocity_along_x, velocity_along_y);
-    else
-        alert("The ball doesn't respect the dimension!");
-
-
-}
-
-setInterval(draw, 10);
+draw();

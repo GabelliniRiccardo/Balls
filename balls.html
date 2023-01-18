@@ -1,49 +1,20 @@
 <!doctype html>
+<html lang="en">
 
 <head>
+    <title>Balls</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-
-
-<div>
-    <h1 id="title">Balls</h1>
-
-</div>
-
-<p id="subtitle">There are 0 balls</p>
-
-
-<div id="container">
-    <div class="left">
-        <div>
-            <input type="text" id="ballDimension" placeholder="Ball Dimension..."/>
-            <input type="text" id="positionX" placeholder="Position in x..."/>
-        </div>
-        <div><input type="text" id="positionY" placeholder="Position in y..."/>
-            <input type="text" id="velocityAlongX" placeholder="Velocity along x..."/>
-        </div>
-
-        <div>
-            <input type="text" id="velocityAlongY" placeholder="Velocity along y..."/>
-            <button type="button" onclick="readBalDimensionFromInputFieldAndCreateIt()">Add a new Ball!</button>
-        </div>
-
-        <label for="color">Choose a color for ball (default: red) :</label>
-        <input id ="color" type="color" name="favcolor" value="#ff0000">
-    </div>
-
-
-    <div id="rigth">
-        <p id="numOfCollision">Number of collision detected: 0</p>
-        <canvas id="myCanvas" width="1000" height="700"></canvas>
-    </div>
-
-
-
-</div>
-
-
-<script type="text/javascript" src="logic.js"></script>
-
+<body class="text-center">
+    <h1>Balls</h1>
+    <p id="ballNumberText">There are 0 balls </p>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-3" onclick="addANewBall()">Add a new Ball!
+    </button>
+    <p id="numOfCollision">Number of collision detected: 0</p>
+    <canvas class="mx-auto border-2 hover:border-dashed"></canvas>
+    <script type="text/javascript" src="logic.js"></script>
 </body>
+</html>
