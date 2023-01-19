@@ -71,8 +71,8 @@ function addANewBall(x, y, dimension) {
     canvas = document.getElementsByTagName("canvas")[0];
     const color = '#' + ((1 << 24) * Math.random() | 0).toString(16);
     dimension = dimension ? dimension : Math.random() * 100;
-    const speed_x = 3;
-    const speed_y = 2;
+    const speed_x = Math.round(Math.random() * 4);
+    const speed_y = Math.round(Math.random() * 4);
     balls.push(new Ball(x ? x : canvas.width / 2, y ? y : canvas.height / 2, color, dimension, speed_x, speed_y));
     document.getElementById("ballNumberText").textContent = `There are ${balls.length} balls`
 }
