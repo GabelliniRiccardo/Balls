@@ -9,12 +9,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="text-center">
-    <h1>Balls</h1>
-    <p id="ballNumberText">There are 0 balls </p>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-3" onclick="addANewBall()">Add a new Ball!
-    </button>
-    <p id="numOfCollision">Number of collision detected: 0</p>
-    <canvas class="mx-auto border-2 hover:border-dashed"></canvas>
-    <script type="text/javascript" src="logic.js"></script>
+<h1>Balls</h1>
+<p id="ballNumberText">There are 0 balls </p>
+<div class="mb-4 inline-block">
+    <label for="interval" class="block text-gray-700 text-sm font-bold mb-2 inline">Timer (milliseconds)</label>
+    <input type="number" id="interval" onchange="changeInterval()"
+           class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+</div>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-3 inline" onclick="changeInterval()">OK</button>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-3 inline" onclick="reset()">Reset</button>
+<p id="numOfCollision">Number of collision detected: 0</p>
+<canvas class="mx-auto border-2 hover:border-dashed cursor-pointer"></canvas>
+<script type="text/javascript" src="logic.js"></script>
 </body>
 </html>
